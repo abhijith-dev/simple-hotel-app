@@ -27,15 +27,24 @@ module.exports = {
     editData : (sno,data)=>{
         let itemsArray = JSON.parse(localStorage.getItem('items'))
         let editableArray = itemsArray.filter(item =>item.sno === sno)
+        itemsArray = itemsArray.filter(item =>item.sno !== sno)
+        let edit = editableArray[0]
         for(let fields of Object.keys(data)){
-            editableArray[fields] = data[fields]
+            edit[fields] = data[fields]
         }
+        itemsArray.push(edit)
+        localStorage.setItem('items',JSON.stringify(itemsArray))
     },
 
     deleteData : (sno)=>{
         let itemsArray = JSON.parse(localStorage.getItem('items'))
         let editableArray = itemsArray.filter(item =>item.sno !== sno)
         localStorage.setItem('items',JSON.stringify(editableArray))
+    },
+    singleContent :(sno)=>{
+        let itemsArray = JSON.parse(localStorage.getItem('items'))
+        let data = itemsArray.filter(item =>item.sno === sno)
+        return data[0]
     }
 
 }

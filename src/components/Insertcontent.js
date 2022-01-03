@@ -10,6 +10,7 @@ export default function Insertcontent({setEvent}) {
        e.preventDefault()
        insertData({name,desc,price})
        setEvent(prev=>prev+1)
+       setName('');setDesc('');setPrice('')
     }
     return (
         <div>
@@ -18,9 +19,9 @@ export default function Insertcontent({setEvent}) {
                form?(
                    <>
                    <form style={{marginTop:"2rem"}} onSubmit ={submitHandle}>
-                   <input type="text" onChange={(e)=>{setName(e.target.value)}}  placeholder ="Item Name" />&nbsp;&nbsp;&nbsp;
-                   <input type="text" onChange={(e)=>{setDesc(e.target.value)}} placeholder ="Item Description"  />&nbsp;&nbsp;&nbsp;
-                   <input type="text" onChange={(e)=>{setPrice(e.target.value)}} placeholder ="Item Prize" />&nbsp;&nbsp;&nbsp;
+                   <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}}  placeholder ="Item Name" />&nbsp;&nbsp;&nbsp;
+                   <input type="text" value={desc} onChange={(e)=>{setDesc(e.target.value)}} placeholder ="Item Description"  />&nbsp;&nbsp;&nbsp;
+                   <input type="text" value={price} onChange={(e)=>{setPrice(e.target.value)}} placeholder ="Item Prize" />&nbsp;&nbsp;&nbsp;
                    <button type="submit">Add Item</button>
                    </form>
                    </>
