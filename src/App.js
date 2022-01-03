@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Insertcontent from "./components/Insertcontent";
+import Tablecontent from "./components/Tablecontent";
+import React from 'react'
 
 function App() {
+  const [event,setEvent] = React.useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       <h1 style={{textAlign:"center"}}> Hotel Application</h1>
+       <Insertcontent event={event} setEvent={setEvent} />
+       <div style={{marginTop:"2rem"}}>
+       <Tablecontent  event={event} setEvent={setEvent}  />
+       </div>
+       
+       
     </div>
   );
 }
